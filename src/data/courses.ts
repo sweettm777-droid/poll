@@ -16,10 +16,7 @@ export const COURSE_CATEGORIES = [
 export type CourseCategory = (typeof COURSE_CATEGORIES)[number];
 
 export const COURSES: Course[] = [
-  // ===================== 국어 =====================
-  { id: 'kor-1', name: '화법과 언어', category: '국어', trackType: '일반선택' },
-  { id: 'kor-2', name: '독서와 작문', category: '국어', trackType: '일반선택' },
-  { id: 'kor-3', name: '문학', category: '국어', trackType: '일반선택' },
+  // ===================== 국어 (진로선택, 융합선택) =====================
   { id: 'kor-4', name: '주제 탐구 독서', category: '국어', trackType: '진로선택' },
   { id: 'kor-5', name: '문학과 영상', category: '국어', trackType: '진로선택' },
   { id: 'kor-6', name: '직무 의사소통', category: '국어', trackType: '진로선택' },
@@ -27,10 +24,7 @@ export const COURSES: Course[] = [
   { id: 'kor-8', name: '매체 의사소통', category: '국어', trackType: '융합선택' },
   { id: 'kor-9', name: '언어생활 탐구', category: '국어', trackType: '융합선택' },
 
-  // ===================== 수학 =====================
-  { id: 'math-1', name: '대수', category: '수학', trackType: '일반선택' },
-  { id: 'math-2', name: '미적분Ⅰ', category: '수학', trackType: '일반선택' },
-  { id: 'math-3', name: '확률과 통계', category: '수학', trackType: '일반선택' },
+  // ===================== 수학 (진로선택, 융합선택, 과학계열 전문·심화) =====================
   { id: 'math-4', name: '기하', category: '수학', trackType: '진로선택' },
   { id: 'math-5', name: '미적분Ⅱ', category: '수학', trackType: '진로선택' },
   { id: 'math-6', name: '경제 수학', category: '수학', trackType: '진로선택' },
@@ -46,10 +40,7 @@ export const COURSES: Course[] = [
   { id: 'math-sp-4', name: '고급 대수', category: '수학', trackType: '전문·심화', isSpecialized: true },
   { id: 'math-sp-5', name: '고급 미적분', category: '수학', trackType: '전문·심화', isSpecialized: true },
 
-  // ===================== 영어 =====================
-  { id: 'eng-1', name: '영어Ⅰ', category: '영어', trackType: '일반선택' },
-  { id: 'eng-2', name: '영어Ⅱ', category: '영어', trackType: '일반선택' },
-  { id: 'eng-3', name: '영어 독해와 작문', category: '영어', trackType: '일반선택' },
+  // ===================== 영어 (진로선택, 융합선택, 외국어계열 전문·심화) =====================
   { id: 'eng-4', name: '영미 문학 읽기', category: '영어', trackType: '진로선택' },
   { id: 'eng-5', name: '영어 발표와 토론', category: '영어', trackType: '진로선택' },
   { id: 'eng-6', name: '심화 영어', category: '영어', trackType: '진로선택' },
@@ -68,11 +59,7 @@ export const COURSES: Course[] = [
   { id: 'eng-sp-7', name: '심화 영어 작문Ⅰ', category: '영어', trackType: '전문·심화', isSpecialized: true },
   { id: 'eng-sp-8', name: '심화 영어 작문Ⅱ', category: '영어', trackType: '전문·심화', isSpecialized: true },
 
-  // ===================== 사회 (역사/도덕) =====================
-  { id: 'soc-1', name: '세계시민과 지리', category: '사회 (역사/도덕)', trackType: '일반선택' },
-  { id: 'soc-2', name: '세계사', category: '사회 (역사/도덕)', trackType: '일반선택' },
-  { id: 'soc-3', name: '사회와 문화', category: '사회 (역사/도덕)', trackType: '일반선택' },
-  { id: 'soc-4', name: '현대사회와 윤리', category: '사회 (역사/도덕)', trackType: '일반선택' },
+  // ===================== 사회 (역사/도덕) (진로선택, 융합선택, 국제계열 전문·심화) =====================
   { id: 'soc-5', name: '한국지리 탐구', category: '사회 (역사/도덕)', trackType: '진로선택' },
   { id: 'soc-6', name: '도시의 미래 탐구', category: '사회 (역사/도덕)', trackType: '진로선택' },
   { id: 'soc-7', name: '동아시아 역사 기행', category: '사회 (역사/도덕)', trackType: '진로선택' },
@@ -101,11 +88,7 @@ export const COURSES: Course[] = [
   { id: 'soc-sp-10', name: '사회 탐구 방법', category: '사회 (역사/도덕)', trackType: '전문·심화', isSpecialized: true },
   { id: 'soc-sp-11', name: '사회과제 연구', category: '사회 (역사/도덕)', trackType: '전문·심화', isSpecialized: true },
 
-  // ===================== 과학 =====================
-  { id: 'sci-1', name: '물리학', category: '과학', trackType: '일반선택' },
-  { id: 'sci-2', name: '화학', category: '과학', trackType: '일반선택' },
-  { id: 'sci-3', name: '생명과학', category: '과학', trackType: '일반선택' },
-  { id: 'sci-4', name: '지구과학', category: '과학', trackType: '일반선택' },
+  // ===================== 과학 (진로선택, 융합선택, 과학계열 전문·실험) =====================
   { id: 'sci-5', name: '역학과 에너지', category: '과학', trackType: '진로선택' },
   { id: 'sci-6', name: '전자기와 양자', category: '과학', trackType: '진로선택' },
   { id: 'sci-7', name: '물질과 에너지', category: '과학', trackType: '진로선택' },
@@ -128,9 +111,7 @@ export const COURSES: Course[] = [
   { id: 'sci-sp-8', name: '생명과학 실험', category: '과학', trackType: '융합선택', isSpecialized: true },
   { id: 'sci-sp-9', name: '지구과학 실험', category: '과학', trackType: '융합선택', isSpecialized: true },
 
-  // ===================== 기술·가정 / 정보 =====================
-  { id: 'tech-1', name: '기술·가정', category: '기술·가정 / 정보', trackType: '일반선택' },
-  { id: 'tech-2', name: '정보', category: '기술·가정 / 정보', trackType: '일반선택' },
+  // ===================== 기술·가정 / 정보 (진로선택, 융합선택, 정보과학) =====================
   { id: 'tech-3', name: '로봇과 공학세계', category: '기술·가정 / 정보', trackType: '진로선택' },
   { id: 'tech-4', name: '생활과학 탐구', category: '기술·가정 / 정보', trackType: '진로선택' },
   { id: 'tech-5', name: '인공지능 기초', category: '기술·가정 / 정보', trackType: '진로선택' },
@@ -142,9 +123,7 @@ export const COURSES: Course[] = [
   { id: 'tech-11', name: '소프트웨어와 생활', category: '기술·가정 / 정보', trackType: '융합선택' },
   { id: 'tech-sp-1', name: '정보과학', category: '기술·가정 / 정보', trackType: '전문·심화', isSpecialized: true },
 
-  // ===================== 체육 =====================
-  { id: 'pe-1', name: '체육1', category: '체육', trackType: '일반선택' },
-  { id: 'pe-2', name: '체육2', category: '체육', trackType: '일반선택' },
+  // ===================== 체육 (진로선택, 융합선택, 체육계열 전문·실기) =====================
   { id: 'pe-3', name: '운동과 건강', category: '체육', trackType: '진로선택' },
   { id: 'pe-4', name: '스포츠 문화', category: '체육', trackType: '진로선택' },
   { id: 'pe-5', name: '스포츠 과학', category: '체육', trackType: '진로선택' },
@@ -165,10 +144,7 @@ export const COURSES: Course[] = [
   { id: 'pe-sp-12', name: '스포츠 경기 분석', category: '체육', trackType: '전문·심화', isSpecialized: true },
   { id: 'pe-sp-13', name: '스포츠 행정 및 경영', category: '체육', trackType: '융합선택', isSpecialized: true },
 
-  // ===================== 예술 (음악·미술·연극·무용 등) =====================
-  { id: 'art-1', name: '음악', category: '예술 (음악·미술·연극 등)', trackType: '일반선택' },
-  { id: 'art-2', name: '미술', category: '예술 (음악·미술·연극 등)', trackType: '일반선택' },
-  { id: 'art-3', name: '연극', category: '예술 (음악·미술·연극 등)', trackType: '일반선택' },
+  // ===================== 예술 (음악·미술·연극·무용·문예 등 진로/융합/전문) =====================
   { id: 'art-4', name: '음악 연주와 창작', category: '예술 (음악·미술·연극 등)', trackType: '진로선택' },
   { id: 'art-5', name: '음악 감상과 비평', category: '예술 (음악·미술·연극 등)', trackType: '진로선택' },
   { id: 'art-6', name: '미술 창작', category: '예술 (음악·미술·연극 등)', trackType: '진로선택' },
@@ -229,40 +205,31 @@ export const COURSES: Course[] = [
   { id: 'art-sp-47', name: '사진과 삶', group: '연극·영화·사진', category: '예술 (음악·미술·연극 등)', trackType: '융합선택', isSpecialized: true },
   { id: 'art-sp-48', name: '사진 감상과 비평', group: '연극·영화·사진', category: '예술 (음악·미술·연극 등)', trackType: '전문·심화', isSpecialized: true },
 
-  // ===================== 제2외국어 / 한문 =====================
-  { id: 'fl-1', name: '독일어', group: '독일어', category: '제2외국어 / 한문', trackType: '일반선택' },
+  // ===================== 제2외국어 / 한문 (진로/융합/전문) =====================
   { id: 'fl-2', name: '독일어 회화', group: '독일어', category: '제2외국어 / 한문', trackType: '진로선택' },
   { id: 'fl-3', name: '독일어권 문화', group: '독일어', category: '제2외국어 / 한문', trackType: '융합선택' },
   { id: 'fl-4', name: '심화 독일어', group: '독일어', category: '제2외국어 / 한문', trackType: '진로선택' },
-  { id: 'fl-5', name: '프랑스어', group: '프랑스어', category: '제2외국어 / 한문', trackType: '일반선택' },
   { id: 'fl-6', name: '프랑스어 회화', group: '프랑스어', category: '제2외국어 / 한문', trackType: '진로선택' },
   { id: 'fl-7', name: '프랑스어권 문화', group: '프랑스어', category: '제2외국어 / 한문', trackType: '융합선택' },
   { id: 'fl-8', name: '심화 프랑스어', group: '프랑스어', category: '제2외국어 / 한문', trackType: '진로선택' },
-  { id: 'fl-9', name: '스페인어', group: '스페인어', category: '제2외국어 / 한문', trackType: '일반선택' },
   { id: 'fl-10', name: '스페인어 회화', group: '스페인어', category: '제2외국어 / 한문', trackType: '진로선택' },
   { id: 'fl-11', name: '스페인어권 문화', group: '스페인어', category: '제2외국어 / 한문', trackType: '융합선택' },
   { id: 'fl-12', name: '심화 스페인어', group: '스페인어', category: '제2외국어 / 한문', trackType: '진로선택' },
-  { id: 'fl-13', name: '중국어', group: '중국어', category: '제2외국어 / 한문', trackType: '일반선택' },
   { id: 'fl-14', name: '중국어 회화', group: '중국어', category: '제2외국어 / 한문', trackType: '진로선택' },
   { id: 'fl-15', name: '중국 문화', group: '중국어', category: '제2외국어 / 한문', trackType: '융합선택' },
   { id: 'fl-16', name: '심화 중국어', group: '중국어', category: '제2외국어 / 한문', trackType: '진로선택' },
-  { id: 'fl-17', name: '일본어', group: '일본어', category: '제2외국어 / 한문', trackType: '일반선택' },
   { id: 'fl-18', name: '일본어 회화', group: '일본어', category: '제2외국어 / 한문', trackType: '진로선택' },
   { id: 'fl-19', name: '일본 문화', group: '일본어', category: '제2외국어 / 한문', trackType: '융합선택' },
   { id: 'fl-20', name: '심화 일본어', group: '일본어', category: '제2외국어 / 한문', trackType: '진로선택' },
-  { id: 'fl-21', name: '러시아어', group: '러시아어', category: '제2외국어 / 한문', trackType: '일반선택' },
   { id: 'fl-22', name: '러시아어 회화', group: '러시아어', category: '제2외국어 / 한문', trackType: '진로선택' },
   { id: 'fl-23', name: '러시아 문화', group: '러시아어', category: '제2외국어 / 한문', trackType: '융합선택' },
   { id: 'fl-24', name: '심화 러시아어', group: '러시아어', category: '제2외국어 / 한문', trackType: '진로선택' },
-  { id: 'fl-25', name: '아랍어', group: '아랍어', category: '제2외국어 / 한문', trackType: '일반선택' },
   { id: 'fl-26', name: '아랍어 회화', group: '아랍어', category: '제2외국어 / 한문', trackType: '진로선택' },
   { id: 'fl-27', name: '아랍 문화', group: '아랍어', category: '제2외국어 / 한문', trackType: '융합선택' },
   { id: 'fl-28', name: '심화 아랍어', group: '아랍어', category: '제2외국어 / 한문', trackType: '진로선택' },
-  { id: 'fl-29', name: '베트남어', group: '베트남어', category: '제2외국어 / 한문', trackType: '일반선택' },
   { id: 'fl-30', name: '베트남어 회화', group: '베트남어', category: '제2외국어 / 한문', trackType: '진로선택' },
   { id: 'fl-31', name: '베트남 문화', group: '베트남어', category: '제2외국어 / 한문', trackType: '융합선택' },
   { id: 'fl-32', name: '심화 베트남어', group: '베트남어', category: '제2외국어 / 한문', trackType: '진로선택' },
-  { id: 'fl-33', name: '한문', group: '한문', category: '제2외국어 / 한문', trackType: '일반선택' },
   { id: 'fl-34', name: '한문 고전 읽기', group: '한문', category: '제2외국어 / 한문', trackType: '진로선택' },
   { id: 'fl-35', name: '언어생활과 한자', group: '한문', category: '제2외국어 / 한문', trackType: '융합선택' },
   // 전공 기초 및 회화Ⅰ·Ⅱ, 독해와 작문 (국제외국어계열 전문, 이미지1)
@@ -314,7 +281,7 @@ export const COURSES: Course[] = [
   { id: 'fl-sp-23', name: '베트남어 독해와 작문Ⅰ', group: '베트남어', category: '제2외국어 / 한문', trackType: '전문·심화', isSpecialized: true },
   { id: 'fl-sp-24', name: '베트남어 독해와 작문Ⅱ', group: '베트남어', category: '제2외국어 / 한문', trackType: '전문·심화', isSpecialized: true },
 
-  // ===================== 교양 =====================
+  // ===================== 교양 (일반선택 2과목 포함, 진로선택, 융합선택) =====================
   { id: 'lib-1', name: '진로와 직업', category: '교양', trackType: '일반선택' },
   { id: 'lib-2', name: '생태와 환경', category: '교양', trackType: '일반선택' },
   { id: 'lib-3', name: '인간과 철학', category: '교양', trackType: '진로선택' },

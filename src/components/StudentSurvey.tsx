@@ -307,11 +307,14 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
 
             {/* 유형별 탭 필터 (가로 스크롤 가능) */}
             <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 text-xs font-medium text-slate-600 scrollbar-none">
-              {(['전체', '진로선택', '융합선택', '전문·심화', '일반선택'] as const).map(track => (
+              {(activeCategory === '교양' 
+                ? (['전체', '진로선택', '융합선택', '일반선택'] as const)
+                : (['전체', '진로선택', '융합선택', '전문·심화'] as const)
+              ).map(track => (
                 <button
                   key={track}
                   type="button"
-                  onClick={() => setSelectedTrackFilter(track)}
+                  onClick={() => setSelectedTrackFilter(track as any)}
                   className={`px-3 py-2 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 ${
                     selectedTrackFilter === track
                       ? 'bg-slate-800 text-white font-semibold shadow-xs'
