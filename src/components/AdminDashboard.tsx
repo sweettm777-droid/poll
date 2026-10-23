@@ -105,113 +105,114 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToSurvey, 
   }, [responses]);
 
   return (
-    <div className="max-w-6xl mx-auto px-4 py-8">
+    <div className="max-w-6xl mx-auto px-3 sm:px-4 py-4 sm:py-8">
       {/* 헤더 네비게이션 */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 mb-4 sm:mb-6 bg-white p-4 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
         <div>
-          <div className="flex items-center gap-2 mb-1">
-            <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700">
+          <div className="flex items-center gap-2 mb-1 flex-wrap">
+            <span className="px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-bold bg-indigo-100 text-indigo-700">
               교직원 관리자 전용
             </span>
-            <span className="text-xs text-slate-400">
+            <span className="text-[11px] sm:text-xs text-slate-400">
               효성고등학교 2027학년도 온라인 공동교육과정
             </span>
           </div>
-          <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+          <h1 className="text-lg sm:text-2xl font-extrabold text-slate-900 tracking-tight break-keep">
             희망과정 수요 조사 통계 결과
           </h1>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap">
+        <div className="flex items-center gap-1.5 sm:gap-2 flex-wrap">
           <button
             onClick={() => exportToCSV(responses)}
-            className="inline-flex items-center gap-1.5 px-3.5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-bold shadow-xs transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white rounded-xl text-xs font-bold shadow-xs transition-colors"
             title="Excel에서 열 수 있는 CSV 파일로 다운로드합니다"
           >
             <Download className="w-3.5 h-3.5" />
-            <span>엑셀 다운로드 (CSV)</span>
+            <span>엑셀 다운로드</span>
           </button>
 
           <button
             onClick={() => setShowPasswordModal(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-medium transition-colors"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-medium transition-colors"
           >
             <Lock className="w-3.5 h-3.5" />
-            <span>비밀번호 변경</span>
+            <span className="hidden xs:inline">비밀번호 변경</span>
+            <span className="xs:hidden">암호변경</span>
           </button>
 
           <button
             onClick={onBackToSurvey}
-            className="inline-flex items-center gap-1.5 px-3 py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-xl text-xs font-semibold transition-colors"
+            className="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-xl text-xs font-semibold transition-colors"
           >
             <ArrowLeft className="w-3.5 h-3.5" />
-            <span>설문 화면 보기</span>
+            <span>설문 보기</span>
           </button>
 
           <button
             onClick={onLogout}
-            className="px-3 py-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-600 rounded-xl text-xs font-medium transition-colors"
+            className="px-2.5 py-1.5 sm:px-3 sm:py-2 bg-white border border-slate-300 hover:bg-slate-50 text-slate-600 rounded-xl text-xs font-medium transition-colors"
           >
             로그아웃
           </button>
         </div>
       </div>
 
-      {/* 요약 KPI 카드 */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
-          <span className="text-xs font-semibold text-slate-500">총 응답 건수</span>
-          <div className="flex items-baseline gap-2 mt-2">
-            <span className="text-3xl font-extrabold text-slate-900">{stats.totalResponses}</span>
+      {/* 요약 KPI 카드 (모바일 2열) */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-4 mb-4 sm:mb-6">
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
+          <span className="text-[11px] sm:text-xs font-semibold text-slate-500">총 응답 건수</span>
+          <div className="flex items-baseline gap-1.5 mt-1 sm:mt-2">
+            <span className="text-2xl sm:text-3xl font-extrabold text-slate-900">{stats.totalResponses}</span>
             <span className="text-xs text-slate-500">건</span>
           </div>
-          <div className="text-[11px] text-indigo-600 font-medium mt-1">
+          <div className="text-[10px] sm:text-[11px] text-indigo-600 font-medium mt-0.5 sm:mt-1 truncate">
             실시간 누적 집계
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
-          <span className="text-xs font-semibold text-slate-500">누적 과목 선택 수</span>
-          <div className="flex items-baseline gap-2 mt-2">
-            <span className="text-3xl font-extrabold text-indigo-600">{stats.totalCourseVotes}</span>
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
+          <span className="text-[11px] sm:text-xs font-semibold text-slate-500">누적 과목 선택 수</span>
+          <div className="flex items-baseline gap-1.5 mt-1 sm:mt-2">
+            <span className="text-2xl sm:text-3xl font-extrabold text-indigo-600">{stats.totalCourseVotes}</span>
             <span className="text-xs text-slate-500">표</span>
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">
-            응답당 평균 {(stats.totalResponses > 0 ? (stats.totalCourseVotes / stats.totalResponses).toFixed(1) : 0)}개 과목 선택
+          <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 sm:mt-1 truncate">
+            평균 {(stats.totalResponses > 0 ? (stats.totalCourseVotes / stats.totalResponses).toFixed(1) : 0)}개 과목
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
-          <span className="text-xs font-semibold text-slate-500">최다 희망 과목</span>
-          <div className="mt-2 truncate">
-            <span className="text-base sm:text-lg font-bold text-slate-900 truncate block">
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
+          <span className="text-[11px] sm:text-xs font-semibold text-slate-500">최다 희망 과목</span>
+          <div className="mt-1 sm:mt-2 truncate">
+            <span className="text-sm sm:text-lg font-bold text-slate-900 truncate block">
               {stats.topCourses[0] ? stats.topCourses[0].name : '-'}
             </span>
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">
+          <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 sm:mt-1 truncate">
             {stats.topCourses[0] ? `${stats.topCourses[0].count}표 (${stats.topCourses[0].percentage}%)` : '응답 없음'}
           </div>
         </div>
 
-        <div className="bg-white p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
-          <span className="text-xs font-semibold text-slate-500">수요 집중 교과군</span>
-          <div className="mt-2 truncate">
-            <span className="text-base sm:text-lg font-bold text-slate-900 truncate block">
+        <div className="bg-white p-3.5 sm:p-5 rounded-2xl border border-slate-200/90 shadow-2xs">
+          <span className="text-[11px] sm:text-xs font-semibold text-slate-500">수요 집중 교과군</span>
+          <div className="mt-1 sm:mt-2 truncate">
+            <span className="text-sm sm:text-lg font-bold text-slate-900 truncate block">
               {stats.categoryStats[0] ? stats.categoryStats[0].category : '-'}
             </span>
           </div>
-          <div className="text-[11px] text-slate-500 mt-1">
-            {stats.categoryStats[0] ? `전체 표의 ${stats.categoryStats[0].percentage}%` : '집계 대기'}
+          <div className="text-[10px] sm:text-[11px] text-slate-500 mt-0.5 sm:mt-1 truncate">
+            {stats.categoryStats[0] ? `전체의 ${stats.categoryStats[0].percentage}%` : '집계 대기'}
           </div>
         </div>
       </div>
 
       {/* 탭 네비게이션 & 빠른 액션 */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
-        <div className="flex gap-1 bg-slate-200/80 p-1 rounded-xl">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 sm:gap-3 mb-4">
+        <div className="flex gap-1 bg-slate-200/80 p-1 rounded-xl overflow-x-auto scrollbar-none">
           <button
             onClick={() => setActiveTab('ranking')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+            className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap ${
               activeTab === 'ranking'
                 ? 'bg-white text-indigo-700 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
@@ -221,23 +222,23 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToSurvey, 
           </button>
           <button
             onClick={() => setActiveTab('list')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+            className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap ${
               activeTab === 'list'
                 ? 'bg-white text-indigo-700 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            📋 제출 응답 목록 ({filteredResponses.length}건)
+            📋 제출 응답 ({filteredResponses.length})
           </button>
           <button
             onClick={() => setActiveTab('categories')}
-            className={`px-4 py-2 rounded-lg text-xs font-bold transition-all ${
+            className={`px-3 py-1.5 sm:px-4 sm:py-2 rounded-lg text-xs font-bold transition-all whitespace-nowrap ${
               activeTab === 'categories'
                 ? 'bg-white text-indigo-700 shadow-xs'
                 : 'text-slate-600 hover:text-slate-900'
             }`}
           >
-            🏛 교과군별 신청 분포
+            🏛 교과군별 비중
           </button>
         </div>
 

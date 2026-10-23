@@ -168,25 +168,25 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
   }
 
   return (
-    <div className="max-w-4xl mx-auto px-4 py-8">
+    <div className="max-w-4xl mx-auto px-3 sm:px-4 py-4 sm:py-8 pb-24 sm:pb-12">
       {/* 설문지 헤더 카드 */}
-      <div className="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden mb-6">
-        <div className="h-3 bg-gradient-to-r from-blue-700 via-indigo-600 to-sky-600"></div>
-        <div className="p-6 sm:p-8">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-xs font-bold mb-4 tracking-wide">
-            <School className="w-3.5 h-3.5" />
+      <div className="bg-white rounded-2xl shadow-xs border border-slate-200/90 overflow-hidden mb-4 sm:mb-6">
+        <div className="h-2.5 sm:h-3 bg-gradient-to-r from-blue-700 via-indigo-600 to-sky-600"></div>
+        <div className="p-4 sm:p-8">
+          <div className="inline-flex items-center gap-1.5 sm:gap-2 px-2.5 sm:px-3 py-1 bg-indigo-50 text-indigo-700 rounded-full text-[11px] sm:text-xs font-bold mb-3 sm:mb-4 tracking-wide">
+            <School className="w-3.5 h-3.5 flex-shrink-0" />
             <span>효성고등학교</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug mb-4">
+          <h1 className="text-lg sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-snug mb-3 sm:mb-4 break-keep">
             효성고등학교 2027학년도 1학기 온라인 공동교육과정 개설 희망과정 수요 조사
           </h1>
 
           {/* 필수 안내 사항 강조 배너 */}
-          <div className="mb-5 p-4 rounded-xl bg-amber-50 border-2 border-amber-300 text-amber-950 flex items-start gap-3 shadow-xs">
-            <AlertCircle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
-            <div className="text-xs sm:text-sm leading-relaxed">
-              <strong className="font-extrabold text-amber-900 block mb-0.5 text-sm sm:text-base">
+          <div className="mb-4 sm:mb-5 p-3.5 sm:p-4 rounded-xl bg-amber-50 border-2 border-amber-300 text-amber-950 flex items-start gap-2.5 sm:gap-3 shadow-2xs">
+            <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+            <div className="text-xs sm:text-sm leading-relaxed break-keep">
+              <strong className="font-extrabold text-amber-900 block mb-0.5 text-xs sm:text-base">
                 [필독] 설문 참여 시 필수 유의사항
               </strong>
               <span>
@@ -195,51 +195,51 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
             </div>
           </div>
 
-          <p className="text-slate-600 text-sm leading-relaxed mb-4">
+          <p className="text-slate-600 text-xs sm:text-sm leading-relaxed mb-3 sm:mb-4 break-keep">
             교과군을 선택하거나 검색하여 개설을 희망하는 과목을 자유롭게 복수 선택해 주세요.
             (별도의 인적사항 입력 없이 즉시 참여할 수 있습니다.)
           </p>
 
-          <div className="flex flex-wrap items-center gap-2 text-xs text-slate-500 pt-3 border-t border-slate-100">
-            <span className="inline-flex items-center gap-1 text-indigo-700 font-semibold bg-indigo-50/70 px-2.5 py-1 rounded-md">
-              ✓ 교과군별 객관식 선택
+          <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 text-[11px] sm:text-xs text-slate-500 pt-2.5 sm:pt-3 border-t border-slate-100">
+            <span className="inline-flex items-center gap-1 text-indigo-700 font-semibold bg-indigo-50/70 px-2 py-0.5 rounded-md">
+              ✓ 교과군별 객관식
             </span>
-            <span className="inline-flex items-center gap-1 text-indigo-700 font-semibold bg-indigo-50/70 px-2.5 py-1 rounded-md">
+            <span className="inline-flex items-center gap-1 text-indigo-700 font-semibold bg-indigo-50/70 px-2 py-0.5 rounded-md">
               ✓ 복수 선택 가능
             </span>
-            <span className="inline-flex items-center gap-1 text-indigo-700 font-semibold bg-indigo-50/70 px-2.5 py-1 rounded-md">
-              ✓ 실시간 검색 지원
+            <span className="inline-flex items-center gap-1 text-indigo-700 font-semibold bg-indigo-50/70 px-2 py-0.5 rounded-md">
+              ✓ 실시간 검색
             </span>
-            <span className="inline-flex items-center gap-1 text-indigo-700 font-semibold bg-indigo-50/70 px-2.5 py-1 rounded-md">
+            <span className="inline-flex items-center gap-1 text-indigo-700 font-semibold bg-indigo-50/70 px-2 py-0.5 rounded-md">
               ✓ 익명 참여
             </span>
           </div>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
         {/* 오류 안내 배너 */}
         {validationError && (
-          <div className="bg-rose-50 border border-rose-200 rounded-xl p-4 flex items-center gap-3 text-rose-800 text-sm animate-shake">
-            <AlertCircle className="w-5 h-5 flex-shrink-0 text-rose-600" />
-            <span className="font-medium">{validationError}</span>
+          <div className="bg-rose-50 border border-rose-200 rounded-xl p-3.5 sm:p-4 flex items-center gap-2.5 text-rose-800 text-xs sm:text-sm animate-shake">
+            <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 flex-shrink-0 text-rose-600" />
+            <span className="font-semibold">{validationError}</span>
           </div>
         )}
 
         {/* 교과군 및 세부과목 선택 섹션 */}
-        <div className="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-6 sm:p-8">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b pb-4">
+        <div className="bg-white rounded-2xl shadow-xs border border-slate-200/90 p-4 sm:p-8">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 sm:mb-6 border-b pb-3 sm:pb-4">
             <div>
-              <h2 className="text-lg font-bold text-slate-800">
-                개설 희망 과목 선택 <span className="text-indigo-600">(복수 선택 가능)</span>
+              <h2 className="text-base sm:text-lg font-bold text-slate-800 break-keep">
+                개설 희망 과목 선택 <span className="text-indigo-600 text-xs sm:text-sm">(복수 선택 가능)</span>
               </h2>
-              <p className="text-xs text-slate-500">
-                교과군을 클릭하여 과목을 확인하거나, 상단 검색창에 과목명을 검색해 보세요.
+              <p className="text-[11px] sm:text-xs text-slate-500 break-keep mt-0.5">
+                교과군을 누르거나 검색창에 과목명을 입력하여 선택해 주세요.
               </p>
             </div>
 
             {/* 현재 선택된 과목 수 표시 */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 border border-indigo-100 rounded-lg text-xs font-semibold text-indigo-700 self-start sm:self-center">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 border border-indigo-100 rounded-xl text-xs font-semibold text-indigo-700 self-start sm:self-center">
               <span>선택된 과목:</span>
               <span className="bg-indigo-600 text-white px-2 py-0.5 rounded-full font-bold">
                 {selectedCourses.length}개
@@ -249,27 +249,27 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
 
           {/* 내가 선택한 과목 칩 리스트 */}
           {selectedCourses.length > 0 && (
-            <div className="mb-6 p-4 bg-indigo-50/60 border border-indigo-100 rounded-xl">
+            <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-indigo-50/60 border border-indigo-100 rounded-xl">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-xs font-bold text-indigo-900 flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-indigo-600" />
-                  내가 선택한 희망 과목 ({selectedCourses.length}개)
+                  <Sparkles className="w-3.5 h-3.5 text-indigo-600 flex-shrink-0" />
+                  <span>내가 선택한 희망 과목 ({selectedCourses.length}개)</span>
                 </span>
                 <button
                   type="button"
                   onClick={() => setSelectedCourses([])}
-                  className="text-xs text-slate-500 hover:text-rose-600 underline"
+                  className="text-[11px] sm:text-xs text-slate-500 hover:text-rose-600 underline font-medium"
                 >
                   전체 취소
                 </button>
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-1.5 sm:gap-2">
                 {selectedCourses.map(courseName => (
                   <span
                     key={courseName}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-white text-indigo-800 border border-indigo-200 text-xs font-medium rounded-lg shadow-2xs group hover:border-rose-200 hover:bg-rose-50 transition-colors"
+                    className="inline-flex items-center gap-1 px-2.5 py-1 sm:px-3 sm:py-1.5 bg-white text-indigo-800 border border-indigo-200 text-xs font-medium rounded-lg shadow-2xs group hover:border-rose-200 hover:bg-rose-50 transition-colors"
                   >
-                    <span>{courseName}</span>
+                    <span className="break-keep">{courseName}</span>
                     <button
                       type="button"
                       onClick={() => toggleCourse(courseName)}
@@ -284,35 +284,35 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
           )}
 
           {/* 검색 및 유형 필터 */}
-          <div className="flex flex-col sm:flex-row gap-3 mb-6">
+          <div className="flex flex-col gap-2.5 sm:flex-row sm:gap-3 mb-4 sm:mb-6">
             <div className="relative flex-1">
               <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-3 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
-                placeholder="과목명 검색 (예: 인공지능, 고급 물리학, 연극, 물리학 실험, 프랑스어)"
-                className="w-full pl-10 pr-10 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                placeholder="과목명 검색 (예: 인공지능, 고급 물리학, 연극, 프랑스어)"
+                className="w-full pl-9 pr-9 py-2.5 rounded-xl border border-slate-300 bg-white text-base sm:text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 placeholder:text-slate-400"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute right-3 top-2.5 text-slate-400 hover:text-slate-600"
+                  className="absolute right-3 top-3 text-slate-400 hover:text-slate-600"
                 >
                   <X className="w-4 h-4" />
                 </button>
               )}
             </div>
 
-            {/* 유형별 탭 필터 (일반/진로/융합/전문심화) */}
-            <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 text-xs font-medium text-slate-600">
+            {/* 유형별 탭 필터 (가로 스크롤 가능) */}
+            <div className="flex items-center gap-1 overflow-x-auto pb-1 sm:pb-0 text-xs font-medium text-slate-600 scrollbar-none">
               {(['전체', '진로선택', '융합선택', '전문·심화', '일반선택'] as const).map(track => (
                 <button
                   key={track}
                   type="button"
                   onClick={() => setSelectedTrackFilter(track)}
-                  className={`px-3 py-2 rounded-lg whitespace-nowrap transition-colors ${
+                  className={`px-3 py-2 rounded-lg whitespace-nowrap transition-colors flex-shrink-0 ${
                     selectedTrackFilter === track
                       ? 'bg-slate-800 text-white font-semibold shadow-xs'
                       : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
@@ -324,13 +324,13 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
             </div>
           </div>
 
-          {/* 교과군 선택 탭 */}
+          {/* 교과군 선택 버튼 그리드 (모바일 2열, PC 5열) */}
           {!searchQuery && (
-            <div className="mb-6">
+            <div className="mb-4 sm:mb-6">
               <label className="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">
-                교과군 (선택하여 하위 세부과목 확인)
+                교과군 (선택하여 하위 과목 보기)
               </label>
-              <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-1.5 sm:gap-2">
                 {COURSE_CATEGORIES.map(category => {
                   const isActive = activeCategory === category;
                   const count = categoryCounts[category] || 0;
@@ -346,24 +346,24 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
                         setActiveCategory(category);
                         setSelectedTrackFilter('전체');
                       }}
-                      className={`relative p-3 rounded-xl text-left border transition-all flex flex-col justify-between ${
+                      className={`relative p-2.5 sm:p-3 rounded-xl text-left border transition-all flex flex-col justify-between active:scale-[0.98] ${
                         isActive
-                          ? 'border-indigo-600 bg-indigo-50/70 text-indigo-900 ring-2 ring-indigo-500/20 shadow-xs'
+                          ? 'border-indigo-600 bg-indigo-50/80 text-indigo-900 ring-2 ring-indigo-500/20 shadow-xs'
                           : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50 text-slate-700'
                       }`}
                     >
-                      <div className="flex items-start justify-between">
-                        <span className={`text-xs sm:text-sm font-bold ${isActive ? 'text-indigo-900' : 'text-slate-800'}`}>
+                      <div className="flex items-start justify-between gap-1">
+                        <span className={`text-xs sm:text-sm font-bold break-keep ${isActive ? 'text-indigo-950 font-extrabold' : 'text-slate-800'}`}>
                           {category}
                         </span>
                         {selectedInCat > 0 && (
-                          <span className="w-4 h-4 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center">
+                          <span className="w-4 h-4 rounded-full bg-indigo-600 text-white text-[10px] font-bold flex items-center justify-center flex-shrink-0">
                             {selectedInCat}
                           </span>
                         )}
                       </div>
-                      <span className="text-[11px] text-slate-400 mt-1">
-                        총 {count}과목
+                      <span className="text-[10px] sm:text-[11px] text-slate-400 mt-1">
+                        {count}과목
                       </span>
                     </button>
                   );
@@ -373,33 +373,33 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
           )}
 
           {/* 세부 과목 체크박스 리스트 */}
-          <div className="border border-slate-200 rounded-xl p-4 sm:p-5 bg-slate-50/50">
-            <div className="flex items-center justify-between mb-3 pb-2 border-b border-slate-200">
-              <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5">
-                <BookOpen className="w-4 h-4 text-indigo-600" />
+          <div className="border border-slate-200 rounded-xl p-3 sm:p-5 bg-slate-50/50">
+            <div className="flex items-center justify-between mb-2.5 pb-2 border-b border-slate-200 gap-2">
+              <span className="text-xs font-bold text-slate-700 flex items-center gap-1.5 truncate">
+                <BookOpen className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-indigo-600 flex-shrink-0" />
                 {searchQuery ? (
-                  <span>
-                    검색 결과: <strong className="text-indigo-600">"{searchQuery}"</strong> ({filteredCourses.length}개 과목)
+                  <span className="truncate">
+                    검색 결과: <strong className="text-indigo-600">"{searchQuery}"</strong> ({filteredCourses.length})
                   </span>
                 ) : (
-                  <span>
-                    {activeCategory} 세부 과목 목록 ({filteredCourses.length}개)
+                  <span className="truncate">
+                    {activeCategory} ({filteredCourses.length}개)
                   </span>
                 )}
               </span>
-              <span className="text-[11px] text-slate-500">
-                원하는 과목을 클릭하여 체크하세요
+              <span className="text-[11px] text-slate-500 whitespace-nowrap">
+                터치하여 체크
               </span>
             </div>
 
             {filteredCourses.length === 0 ? (
-              <div className="text-center py-10 text-slate-400">
-                <HelpCircle className="w-8 h-8 mx-auto mb-2 opacity-60" />
-                <p className="text-sm">조건에 맞는 과목이 없습니다.</p>
-                <p className="text-xs mt-1">검색어나 선택 필터를 변경해 보세요.</p>
+              <div className="text-center py-8 text-slate-400">
+                <HelpCircle className="w-7 h-7 mx-auto mb-1.5 opacity-60" />
+                <p className="text-xs sm:text-sm">조건에 맞는 과목이 없습니다.</p>
+                <p className="text-[11px] mt-0.5">검색어를 지우거나 필터를 변경해 보세요.</p>
               </div>
             ) : (
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5 max-h-[460px] overflow-y-auto pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-2.5 max-h-[460px] overflow-y-auto pr-0.5">
                 {filteredCourses.map(course => {
                   const isSelected = selectedCourses.includes(course.name);
 
@@ -416,9 +416,9 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
                     <div
                       key={course.id}
                       onClick={() => toggleCourse(course.name)}
-                      className={`cursor-pointer p-3 rounded-xl border text-left transition-all select-none flex items-start gap-2.5 ${
+                      className={`cursor-pointer p-2.5 sm:p-3 rounded-xl border text-left transition-all select-none flex items-start gap-2.5 min-h-[56px] active:scale-[0.99] ${
                         isSelected
-                          ? 'border-indigo-600 bg-white ring-2 ring-indigo-500/30 shadow-xs'
+                          ? 'border-indigo-600 bg-indigo-50/30 ring-2 ring-indigo-500/30 shadow-xs'
                           : 'border-slate-200/90 bg-white hover:border-slate-300 hover:bg-slate-50/90'
                       }`}
                     >
@@ -426,7 +426,7 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
                         type="checkbox"
                         checked={isSelected}
                         onChange={() => {}}
-                        className="mt-0.5 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer pointer-events-none"
+                        className="mt-1 h-4 w-4 rounded border-slate-300 text-indigo-600 focus:ring-indigo-500 cursor-pointer pointer-events-none flex-shrink-0"
                       />
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-1.5 flex-wrap mb-1">
@@ -444,7 +444,7 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
                             </span>
                           )}
                         </div>
-                        <h4 className={`text-sm font-semibold truncate ${isSelected ? 'text-indigo-900' : 'text-slate-800'}`}>
+                        <h4 className={`text-xs sm:text-sm font-semibold break-keep leading-snug ${isSelected ? 'text-indigo-950 font-bold' : 'text-slate-800'}`}>
                           {course.name}
                         </h4>
                       </div>
@@ -456,19 +456,38 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
           </div>
         </div>
 
-        {/* 최종 제출 버튼 */}
-        <div className="pt-2 pb-12 text-center">
+        {/* 데스크톱/태블릿용 기본 제출 버튼 */}
+        <div className="pt-2 text-center">
           <button
             type="submit"
-            className="w-full sm:w-80 py-4 px-8 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl font-bold text-base shadow-lg hover:shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 mx-auto"
+            className="w-full sm:w-80 py-3.5 sm:py-4 px-6 sm:px-8 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white rounded-xl font-bold text-sm sm:text-base shadow-lg hover:shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 mx-auto cursor-pointer"
           >
-            <span>희망 과목 제출하기</span>
-            <ArrowRight className="w-5 h-5" />
+            <span>희망 과목 제출하기 ({selectedCourses.length}개)</span>
+            <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
-          <p className="text-xs text-slate-500 mt-3">
+          <p className="text-[11px] sm:text-xs text-slate-500 mt-2.5">
             제출된 응답은 공동교육과정 개설 심의 통계 자료로 활용됩니다.
           </p>
         </div>
+
+        {/* 모바일 하단 Sticky 빠른 제출 바 (선택과목이 1개 이상일 때 하단 고정 노출) */}
+        {selectedCourses.length > 0 && (
+          <div className="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-md border-t border-indigo-100 p-3 shadow-lg flex items-center justify-between gap-3 animate-in slide-in-from-bottom duration-200">
+            <div className="min-w-0">
+              <span className="text-[11px] text-slate-500 block">선택한 희망 과목</span>
+              <strong className="text-sm font-extrabold text-indigo-700 truncate block">
+                총 {selectedCourses.length}개 과목
+              </strong>
+            </div>
+            <button
+              type="submit"
+              className="py-2.5 px-5 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white rounded-xl font-bold text-xs shadow-md transition-colors flex items-center gap-1.5 flex-shrink-0"
+            >
+              <span>제출하기</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        )}
       </form>
     </div>
   );
