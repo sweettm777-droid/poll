@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import { COURSE_CATEGORIES, CourseCategory, COURSES } from '../data/courses';
 import { TrackType } from '../types/survey';
-import { saveResponse } from '../utils/storage';
+import { submitSurvey } from '../utils/storage';
 
 interface StudentSurveyProps {
   onSurveySubmitted?: () => void;
@@ -78,8 +78,10 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
     setValidationError(null);
   };
 
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+
   // 폼 제출
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (selectedCourses.length === 0) {
@@ -88,17 +90,25 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
       return;
     }
 
-    // 저장 실행
-    saveResponse({
-      selectedCourses,
-    });
+    try {
+      setIsSubmitting(true);
+      setValidationError(null);
 
-    setSubmittedCourses([...selectedCourses]);
-    setIsSubmitted(true);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+      // 클라우드 데이터베이스에 실시간 저장
+      await submitSurvey(selectedCourses);
 
-    if (onSurveySubmitted) {
-      onSurveySubmitted();
+      setSubmittedCourses([...selectedCourses]);
+      setIsSubmitted(true);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      if (onSurveySubmitted) {
+        onSurveySubmitted();
+      }
+    } catch (err) {
+      console.error(err);
+      setValidationError('설문 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -463,9 +473,16 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
         <div className="pt-2 text-center">
           <button
             type="submit"
-            className="w-full sm:w-80 py-3.5 sm:py-4 px-6 sm:px-8 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white rounded-xl font-bold text-sm sm:text-base shadow-lg hover:shadow-indigo-500/25 transition-all flex items-center justify-center gap-2 mx-auto cursor-pointer"
+            disabled={isSubmitting}
+            className={`w-full sm:w-80 py-3.5 sm:py-4 px-6 sm:px-8 text-white rounded-xl font-bold text-sm sm:text-base shadow-lg transition-all flex items-center justify-center gap-2 mx-auto cursor-pointer ${
+              isSubmitting
+                ? 'bg-indigo-400 cursor-not-allowed'
+                : 'bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 hover:shadow-indigo-500/25'
+            }`}
           >
-            <span>희망 과목 제출하기 ({selectedCourses.length}개)</span>
+            <span>
+              {isSubmitting ? '서버에 제출 중...' : `희망 과목 제출하기 (${selectedCourses.length}개)`}
+            </span>
             <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
           <p className="text-[11px] sm:text-xs text-slate-500 mt-2.5">
@@ -484,9 +501,12 @@ export const StudentSurvey: React.FC<StudentSurveyProps> = ({ onSurveySubmitted,
             </div>
             <button
               type="submit"
-              className="py-2.5 px-5 bg-indigo-600 hover:bg-indigo-700 active:bg-indigo-800 text-white rounded-xl font-bold text-xs shadow-md transition-colors flex items-center gap-1.5 flex-shrink-0"
+              disabled={isSubmitting}
+              className={`py-2.5 px-5 text-white rounded-xl font-bold text-xs shadow-md transition-colors flex items-center gap-1.5 flex-shrink-0 ${
+                isSubmitting ? 'bg-indigo-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700'
+              }`}
             >
-              <span>제출하기</span>
+              <span>{isSubmitting ? '제출 중...' : '제출하기'}</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

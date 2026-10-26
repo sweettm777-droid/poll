@@ -1,0 +1,26 @@
+{
+  "entities": {
+    "SurveyResponse": {
+      "title": "SurveyResponse",
+      "description": "2027학년도 효성고등학교 온라인 공동교육과정 개설 희망 과목 수요조사 응답",
+      "type": "object",
+      "properties": {
+        "selectedCourses": {
+          "type": "array",
+          "description": "선택한 과목 목록 (복수 선택)"
+        },
+        "submittedAt": {
+          "type": "string",
+          "description": "제출 일시 (ISO 문자열)"
+        }
+      },
+      "required": ["selectedCourses", "submittedAt"]
+    }
+  },
+  "firestore": {
+    "/surveys/{surveyId}": {
+      "schema": "SurveyResponse",
+      "description": "모든 학생이 제출한 익명 희망과목 수요조사 응답 컬렉션"
+    }
+  }
+}

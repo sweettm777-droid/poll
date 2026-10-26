@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { 
   BarChart3, 
   Download, 
@@ -11,16 +11,18 @@ import {
   BookOpen, 
   X,
   Layers,
-  FileSpreadsheet
+  FileSpreadsheet,
+  Radio,
+  Loader2
 } from 'lucide-react';
 import { SurveyResponse } from '../types/survey';
 import { 
-  getResponses, 
-  deleteResponse, 
-  clearAllResponses, 
+  subscribeToSurveys,
+  deleteSurvey,
+  clearAllSurveys,
   exportToCSV, 
   computeCourseStats, 
-  generateSampleResponses,
+  generateSampleSurveysToCloud,
   setAdminPassword
 } from '../utils/storage';
 
@@ -30,7 +32,8 @@ interface AdminDashboardProps {
 }
 
 export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToSurvey, onLogout }) => {
-  const [responses, setResponses] = useState<SurveyResponse[]>(() => getResponses());
+  const [responses, setResponses] = useState<SurveyResponse[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCourseFilter, setSelectedCourseFilter] = useState<string>('전체');
 
@@ -42,28 +45,53 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToSurvey, 
   // 탭 상태 (과목 순위 / 전체 응답 내역 / 교과군 분석)
   const [activeTab, setActiveTab] = useState<'ranking' | 'list' | 'categories'>('ranking');
 
-  const reloadData = () => {
-    setResponses(getResponses());
-  };
+  // 실시간 클라우드 DB 구독
+  useEffect(() => {
+    setIsLoading(true);
+    const unsubscribe = subscribeToSurveys(
+      (data) => {
+        setResponses(data);
+        setIsLoading(false);
+      },
+      (err) => {
+        console.error('Failed to subscribe to surveys:', err);
+        setIsLoading(false);
+      }
+    );
 
-  const handleDelete = (id: string) => {
+    return () => {
+      if (unsubscribe) unsubscribe();
+    };
+  }, []);
+
+  const handleDelete = async (id: string) => {
     if (confirm(`응답 #${id} 데이터를 삭제하시겠습니까?`)) {
-      deleteResponse(id);
-      reloadData();
+      try {
+        await deleteSurvey(id);
+      } catch (e) {
+        alert('삭제 중 오류가 발생했습니다.');
+      }
     }
   };
 
-  const handleClearAll = () => {
+  const handleClearAll = async () => {
     if (confirm('주의: 모든 설문 응답 데이터를 영구적으로 초기화하시겠습니까?')) {
-      clearAllResponses();
-      reloadData();
+      try {
+        await clearAllSurveys(responses);
+        alert('모든 데이터가 초기화되었습니다.');
+      } catch (e) {
+        alert('초기화 중 오류가 발생했습니다.');
+      }
     }
   };
 
-  const handleGenerateSamples = () => {
-    generateSampleResponses();
-    reloadData();
-    alert('모의 설문 응답 15건이 생성되었습니다.');
+  const handleGenerateSamples = async () => {
+    try {
+      await generateSampleSurveysToCloud();
+      alert('모의 설문 응답 15건이 클라우드 DB에 추가되었습니다.');
+    } catch (e) {
+      alert('샘플 데이터 생성 중 오류가 발생했습니다.');
+    }
   };
 
   const handleSavePassword = (e: React.FormEvent) => {
@@ -112,6 +140,10 @@ export const AdminDashboard: React.FC<AdminDashboardProps> = ({ onBackToSurvey, 
           <div className="flex items-center gap-2 mb-1 flex-wrap">
             <span className="px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-bold bg-indigo-100 text-indigo-700">
               교직원 관리자 전용
+            </span>
+            <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              <span>클라우드 DB 실시간 동기화 중</span>
             </span>
             <span className="text-[11px] sm:text-xs text-slate-400">
               효성고등학교 2027학년도 온라인 공동교육과정
